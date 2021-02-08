@@ -43,6 +43,26 @@ This lets reviewers check that you've considered all the cases your code could t
 
 -->
 
+### Testing
+
+<!--
+
+What automated tests do we have around this change?
+
+- If it is new code, are all parts tested?
+- If changing existing code, did you ahve to update any tests?
+- If changing existing code, did you add tests to cover the change?
+
+Also, if you are touching old code, did you add additional tests, cause additional tests makes everyone happy!
+
+Remember, types of tests you can have:
+
+- unit tests
+- integrations tests
+- end to end test
+
+-->
+
 ## Possible Drawbacks
 
 <!-- What are the possible side-effects or negative impacts of the code change? -->
