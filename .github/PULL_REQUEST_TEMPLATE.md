@@ -50,7 +50,7 @@ This lets reviewers check that you've considered all the cases your code could t
 What automated tests do we have around this change?
 
 - If it is new code, are all parts tested?
-- If changing existing code, did you ahve to update any tests?
+- If changing existing code, did you have to update any tests?
 - If changing existing code, did you add tests to cover the change?
 
 Also, if you are touching old code, did you add additional tests, cause additional tests makes everyone happy!
