@@ -4,7 +4,7 @@
 
 * Fill out the template below. Any pull request that does not include enough information to be reviewed in a timely manner may be closed at the maintainers' discretion.
 * The pull request must have a Clubhouse ticket attached. We're trying to make sure all changes are requested and tracked, so make sure there is a ticket!
-* The pull request must update the test suite to exercise the updated functionality. CodeCov will post on your PR after creation to show what the coverage diff is.
+* The pull request must update the test suite to exercise the updated functionality. 
 * After you create the pull request, all status checks must pass before a maintainer reviews your contribution.
 
 *------------------------------*
@@ -66,9 +66,6 @@ Remember, types of tests you can have:
 ## Possible Drawbacks
 
 <!-- What are the possible side-effects or negative impacts of the code change? -->
-
-## Clubhouse Ticket
-<!-- Post a link to the Clubhouse ticket here! -->
 
 <!--
 Notes:
