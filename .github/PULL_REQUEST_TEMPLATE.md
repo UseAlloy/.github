@@ -25,6 +25,17 @@ Include any context not present in the ticket. If your change touches many areas
 
 We must be able to understand the design of your change from this description. If we can't get a good idea of what the code will be doing from the description here, the pull request may be closed at the maintainers' discretion. Keep in mind that the maintainer reviewing this PR may not be familiar with or have worked with the code here recently, so please walk us through the concepts.
 
+It is often helpful to show a before/after screenshot or gif/video; Markdown tables can help make those readable, like so:
+| Before                               | After                                |
+| :----------------------------------- | :----------------------------------- |
+| ![](http://before.image.link)        | ![](http://url.for.after.image)      |
+| ![](https://i.imgur.com/XFqHtXE.jpg) | ![](https://i.imgur.com/XFqHtXE.jpg) |
+
+<details open>
+  <summary>collapsable sections</summary>
+  You can also create collapsable sections for greater detail. These can include Markdown.
+</details>
+
 -->
 
 ## Steps To Test
