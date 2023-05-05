@@ -80,7 +80,13 @@ Remember, types of tests you can have:
 
 ## Security & Privacy
 
-<!-- Any significant security related changes/concerns to note. This includes changes to authentication/authorization, data privacy, networking, major configuration changes, among others. -->
+<!-- Any significant security related changes/concerns to note. This includes changes to authentication/authorization, data privacy, networking, major configuration changes, among others. 
+
+For example, 
+- this change enables a feature flag will allow users with the `xyz` role to make config changes
+- this change makes the cluster accessible to a specific VPC
+
+-->
 
 <!--
 Notes:
