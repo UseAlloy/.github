@@ -78,6 +78,10 @@ Remember, types of tests you can have:
 
 <!-- What are the possible side-effects or negative impacts of the code change? -->
 
+## Security & Privacy
+
+<!-- Any significant security related changes/concerns to note. This includes changes to authentication/authorization, data privacy, networking, major configuration changes, among others. -->
+
 <!--
 Notes:
 
