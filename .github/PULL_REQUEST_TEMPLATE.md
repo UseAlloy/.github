@@ -1,96 +1,49 @@
-<!--
+## ℹ️ Overview
 
-*------- PR Requirements -------*
+**REPLACE ME**: Provide the context and description of the change.
 
-* Fill out the template below. Any pull request that does not include enough information to be reviewed in a timely manner may be closed at the maintainers' discretion.
-* The pull request must have a Clubhouse ticket attached. We're trying to make sure all changes are requested and tracked, so make sure there is a ticket!
-* The pull request must update the test suite to exercise the updated functionality. 
-* After you create the pull request, all status checks must pass before a maintainer reviews your contribution.
+## 🧪 Test Instructions
 
-*------------------------------*
+Here are the steps to verify the change works as expected and does not introduce regressions.
 
--->
+1. 
+2. 
+3. 
 
-## Context/Background
+### Test Results
 
-<!--
+Here are the testing results with relevant screenshots, screen recordings, query outputs, etc.
 
-Include any context not present in the ticket. If your change touches many areas of the code, include an overview of those areas.
+## 📝 Authoring Guidelines
 
--->
+> [!TIP]
+> Read through our full [PR Guidelines](https://www.notion.so/alloy/PR-Guidelines-22c05351a8d280c898d8c8a0b486d96d#23205351a8d28009b535d9218306a268).
 
-## Description of the Change
+As the author, I verify that I have:
 
-<!--
+- [ ] Followed the test instructions and updated the test results.
+- [ ] Added/updated unit tests as applicable.
+- [ ] Added/updated documentation as applicable.
 
-We must be able to understand the design of your change from this description. If we can't get a good idea of what the code will be doing from the description here, the pull request may be closed at the maintainers' discretion. Keep in mind that the maintainer reviewing this PR may not be familiar with or have worked with the code here recently, so please walk us through the concepts.
+## 💬 Reviewer Guidelines
 
-It is often helpful to show a before/after screenshot or gif/video; Markdown tables can help make those readable, like so:
-| Before                               | After                                |
-| :----------------------------------- | :----------------------------------- |
-| ![](http://before.image.link)        | ![](http://url.for.after.image)      |
-| ![](https://i.imgur.com/XFqHtXE.jpg) | ![](https://i.imgur.com/XFqHtXE.jpg) |
+> [!TIP]
+> Read through our full [PR Guidelines](https://www.notion.so/alloy/PR-Guidelines-22c05351a8d280c898d8c8a0b486d96d#24705351a8d2802998f6e5e0612bfd4c).
 
-<details open>
-  <summary>collapsable sections</summary>
-  You can also create collapsable sections for greater detail. These can include Markdown.
-</details>
+Reviewers are responsible for:
 
--->
+- Reading the full PR description.
+- Evaluating all code changes, including edge cases and regressions.
+- Testing the change (locally or in ephemeral environments, if applicable).
+- Leaving thoughtful, actionable feedback.
+- Clearly signaling approval or requesting changes.
 
-## Steps To Test
+## 🚨 Risks
 
-<!--
+There may be possible side effects or negative impacts from these changes:
 
-What process did you follow to verify that your change has the desired effects?
-
-- How did you verify that all new functionality works as expected?
-- How did you verify that all changed functionality works as expected?
-- How did you verify that the change has not introduced any regressions?
-
-Describe the actions you performed (including buttons you clicked, text you typed, commands you ran, etc.), and describe the results you observed.
-
-This lets reviewers check that you've considered all the cases your code could touch.
-
--->
-
-## Testing
-
-<!--
-
-What automated tests do we have around this change?
-
-- If it is new code, are all parts tested?
-- If changing existing code, did you have to update any tests?
-- If changing existing code, did you add tests to cover the change?
-
-Also, if you are touching old code, did you add additional tests, cause additional tests makes everyone happy!
-
-Remember, types of tests you can have:
-
-- unit tests
-- integrations tests
-- end to end tests
-
--->
-
-## Possible Drawbacks
-
-<!-- What are the possible side-effects or negative impacts of the code change? -->
-
-## Security & Privacy
-
-<!-- Any significant security related changes/concerns to note. This includes changes to authentication/authorization, data privacy, networking, major configuration changes, among others. 
-
-For example, 
-- this change enables a feature flag will allow users with the `xyz` role to make config changes
-- this change makes the cluster accessible to a specific VPC
-
--->
-
-<!--
-Notes:
-
-Try to keep your PR under 500 LOC. If your change is large, group it into PRs based on logical areas (adding a component, adding an API endpoint, etc).
-
--->
+- [ ] Authentication and/or authorization
+- [ ] Data privacy
+- [ ] Networking
+- [ ] Major configuration
+- [ ] Other core setup (please clarify below)
