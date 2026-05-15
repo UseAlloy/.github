@@ -37,20 +37,63 @@ The trimmed version drops field lists, quantitative details, and extra justifyin
 
 ## PR Template
 
-The canonical pull request template lives in this public `UseAlloy/.github` repository:
+This is a literal copy of the canonical [PULL_REQUEST_TEMPLATE.md](../../.github/PULL_REQUEST_TEMPLATE.md). Use it as the PR body verbatim, filling in only the dynamic sections (Overview, Test Instructions, Test Results, Risks) per the guidance below. Do not invent, reorder, or rename sections.
 
-https://github.com/UseAlloy/.github/blob/master/.github/PULL_REQUEST_TEMPLATE.md
+> If you change the template, change this inline copy too. They live in the same repo so the diff stays in one PR.
 
-Fetch it in a shell to get the live section list and headings:
+````markdown
+## ℹ️ Overview
 
-```sh
-export PR_TEMPLATE=$(gh api \
-  --header 'Accept: application/vnd.github.v3.raw' \
-  'repos/UseAlloy/.github/contents/.github/PULL_REQUEST_TEMPLATE.md'
-)
-```
+**REPLACE ME**: Provide the context and description of the change.
 
-Fill in this template — do not invent or reorder sections. The per-section authoring guidance below applies to whichever sections the template currently contains.
+## 🧪 Test Instructions
+
+Here are the steps to verify the change works as expected and does not introduce regressions.
+
+1. 
+2. 
+3. 
+
+### Test Results
+
+Here are the testing results with relevant screenshots, screen recordings, query outputs, etc.
+
+## 📝 Authoring Guidelines
+
+> [!TIP]
+> Read through our full [PR Guidelines](https://www.notion.so/alloy/PR-Guidelines-22c05351a8d280c898d8c8a0b486d96d#23205351a8d28009b535d9218306a268).
+
+As the author, I verify that I have:
+
+- [ ] Followed the test instructions and updated the test results.
+- [ ] Added/updated unit tests as applicable.
+- [ ] Added/updated documentation as applicable.
+
+## 💬 Reviewer Guidelines
+
+> [!TIP]
+> Read through our full [PR Guidelines](https://www.notion.so/alloy/PR-Guidelines-22c05351a8d280c898d8c8a0b486d96d#24705351a8d2802998f6e5e0612bfd4c).
+
+Reviewers are responsible for:
+
+- Reading the full PR description.
+- Evaluating all code changes, including edge cases and regressions.
+- Testing the change (locally or in ephemeral environments, if applicable).
+- Leaving thoughtful, actionable feedback.
+- Clearly signaling approval or requesting changes.
+
+## 🚨 Risks
+
+There may be possible side effects or negative impacts from these changes:
+
+- [ ] Authentication and/or authorization
+- [ ] Data privacy
+- [ ] Networking
+- [ ] Major configuration
+- [ ] Other core setup (please clarify below)
+````
+
+The Authoring Guidelines and Reviewer Guidelines sections are static — include them in the body as-is, unchanged.
 
 ## Drafting the PR
 
@@ -76,7 +119,7 @@ Concise and descriptive. Do not prefix or include the ticket ID — the branch n
 
 ### Fill in the template sections
 
-Use the live template fetched above. For each section it contains, apply this guidance where relevant:
+Apply this guidance to the dynamic sections:
 
 - **Overview** — replace the "REPLACE ME" placeholder with what changed and why. Short bullets, not prose. 3-5 bullets max, one line each. Skip obvious context the diff conveys, focus on intent and non-obvious decisions.
 - **Test Instructions** — only steps a reviewer actually needs to run. Skip "clone the repo" style setup. 3-5 steps max. If none can be accurately defined, tell the user to fill this in as a next step after the PR is created.
@@ -87,16 +130,17 @@ Use the live template fetched above. For each section it contains, apply this gu
 
 ### Output format
 
-Output the title in its own fenced markdown code block, then each section from the fetched template in its own fenced markdown code block. This lets the user copy-paste each section independently into GitHub.
+Output the title in its own fenced markdown code block, then each dynamic section (Overview, Test Instructions, optionally Test Results, Risks) in its own fenced markdown code block. This lets the user copy-paste each section independently into GitHub.
 
 Rules:
 
 - Triple backticks with `markdown` language tag on every block.
-- Label each block with a bold heading **outside** the fence (eg `**Title**`, `**Overview**`) using the section name from the fetched template.
+- Label each block with a bold heading **outside** the fence (eg `**Title**`, `**Overview**`) matching the template section name.
 - Do not include the template's section heading (eg `## ℹ️ Overview`) inside the code block — the bold label outside serves that purpose.
 - No preamble or commentary between blocks.
+- Do not output blocks for Authoring Guidelines or Reviewer Guidelines — those are static and don't need user attention per-PR.
 
-Use this format for every section in the fetched template, in template order. Example for the Title and an Overview section:
+Example:
 
 **Title**
 
@@ -115,7 +159,7 @@ Use this format for every section in the fetched template, in template order. Ex
 ```
 ````
 
-Apply the same pattern to whichever sections the current template contains (Test Instructions, Test Results, Risks, etc).
+(Apply the same pattern to Test Instructions, Test Results if applicable, and Risks.)
 
 ### Offer to publish
 
@@ -141,22 +185,42 @@ Push the branch first:
 git push --set-upstream origin HEAD
 ```
 
-Then create the PR as a draft:
-
-```sh
-gh pr create --title '{TITLE}' --body '{BODY}' --draft
-```
+Then create the PR as a draft. The body is the full [PR Template](#pr-template) with the dynamic sections filled in (Authoring Guidelines and Reviewer Guidelines stay as-is).
 
 Use a HEREDOC for the body to preserve formatting:
 
 ```sh
 gh pr create --title "the pr title" --draft --body "$(cat <<'EOF'
-<body here>
+## ℹ️ Overview
+
+- <filled-in bullet>
+- <filled-in bullet>
+
+## 🧪 Test Instructions
+
+1. <step>
+2. <step>
+
+### Test Results
+
+<results or leave empty>
+
+## 📝 Authoring Guidelines
+
+<static — copy from the template above unchanged>
+
+## 💬 Reviewer Guidelines
+
+<static — copy from the template above unchanged>
+
+## 🚨 Risks
+
+- [x] <only checked categories>
+
+<context about the risk>
 EOF
 )"
 ```
 
-Replace the placeholders:
-
-- `{TITLE}`: concise, descriptive title for the branch's changes (no ticket ID).
-- `{BODY}`: PR body using the fetched [PR Template](#pr-template), filled in per [Drafting the PR](#drafting-the-pr).
+- Title: concise, descriptive (no ticket ID).
+- Body: the [PR Template](#pr-template) above, with dynamic sections filled in per [Drafting the PR](#drafting-the-pr).
