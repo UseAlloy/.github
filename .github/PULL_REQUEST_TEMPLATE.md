@@ -1,8 +1,3 @@
-<!--
-Editors: if you change this template, update the inline copy in skills/pr-create/SKILL.md.
-The pr-create agent skill inlines this template so it doesn't need a runtime fetch.
--->
-
 ## ℹ️ Overview
 
 **REPLACE ME**: Provide the context and description of the change.
