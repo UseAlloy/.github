@@ -35,3 +35,5 @@ You can then ask an AI agent to create a PR, or call the skill directly in the p
 ```sh
 /pr-create
 ```
+
+The skill drafts a PR summary from the branch's diff (title, overview, test instructions, risks) and offers to create a new PR or update an existing one.
