@@ -87,9 +87,35 @@ Use the live template fetched above. For each section it contains, apply this gu
 
 ### Output format
 
-Output the title in its own fenced markdown code block, then each template section in its own fenced markdown code block. Triple backticks with `markdown` language tag. Label each block with a bold heading outside the fence (eg `**Title**`, `**Overview**`) matching the section name in the template. Do not include the section heading (eg `## ℹ️ Overview`) inside the code block — the bold label outside serves that purpose. No other preamble or commentary.
+Output the title in its own fenced markdown code block, then each section from the fetched template in its own fenced markdown code block. This lets the user copy-paste each section independently into GitHub.
 
-This lets the user copy-paste each section independently into GitHub.
+Rules:
+
+- Triple backticks with `markdown` language tag on every block.
+- Label each block with a bold heading **outside** the fence (eg `**Title**`, `**Overview**`) using the section name from the fetched template.
+- Do not include the template's section heading (eg `## ℹ️ Overview`) inside the code block — the bold label outside serves that purpose.
+- No preamble or commentary between blocks.
+
+Use this format for every section in the fetched template, in template order. Example for the Title and an Overview section:
+
+**Title**
+
+````
+```markdown
+<concise title>
+```
+````
+
+**Overview**
+
+````
+```markdown
+- <bullet>
+- <bullet>
+```
+````
+
+Apply the same pattern to whichever sections the current template contains (Test Instructions, Test Results, Risks, etc).
 
 ### Offer to publish
 
