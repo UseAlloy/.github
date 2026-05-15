@@ -41,7 +41,7 @@ The canonical pull request template lives in this public `UseAlloy/.github` repo
 
 https://github.com/UseAlloy/.github/blob/master/.github/PULL_REQUEST_TEMPLATE.md
 
-It can be fetched in a shell like this:
+Fetch it in a shell to get the live section list and headings:
 
 ```sh
 export PR_TEMPLATE=$(gh api \
@@ -50,93 +50,56 @@ export PR_TEMPLATE=$(gh api \
 )
 ```
 
-The sections below match this template.
+Fill in this template — do not invent or reorder sections. The per-section authoring guidance below applies to whichever sections the template currently contains.
 
-## Instructions
+## Drafting the PR
 
-1. **Analyze the actual changes on the branch** (this is the single source of truth, not conversation history):
+### Analyze the actual changes on the branch
 
-   ```sh
-   git log origin/master..HEAD --oneline
-   git diff origin/master...HEAD --stat
-   git diff origin/master...HEAD
-   ```
+This is the single source of truth, not conversation history.
 
-   Read the full diff carefully. Every claim in the summary must be backed by something in the diff. Do not describe changes that were discussed but not committed, or changes that were made and then reverted.
-
-2. **Conversation context is secondary.** If this runs within an existing chat session, the conversation may explain _why_ a change was made or what trade-offs were considered. Use that for the "why", but never let it override what the diff actually shows. If the conversation mentions a change that isn't in the diff, do not include it.
-
-3. **Generate a PR title:** concise, descriptive.
-
-4. **Generate summary** by filling in these sections (matching the template):
-
-   - **Overview:** replace the "REPLACE ME" placeholder with what changed and why. Short bullets, not prose. 3-5 bullets max, one line each. Skip obvious context the diff conveys, focus on intent and non-obvious decisions.
-   - **Test Instructions:** only steps a reviewer actually needs to run. Skip "clone the repo" style setup. 3-5 steps max. If none can be accurately defined, tell the user to fill this in as a next step after the PR is created.
-   - **Test Results** (optional): include only when you have actual results, screenshots, recordings, or query outputs to share. Otherwise omit the section entirely.
-   - **Risks:** check `[x]` only for real risks from: Authentication/authorization, Data privacy, Networking, Major configuration, Other core setup. Add context below the checkbox list. If none apply, write one short line eg "No significant risks - [brief reason]". If you cannot accurately assess risks, tell the user to fill this in as a next step.
-
-   **Length target:** full summary readable in under 30 seconds. If you're writing more, cut the least important detail first. Default to the shorter version.
-
-5. **Output each section in its own fenced code block** (triple backticks with `markdown` language tag) so the user can copy-paste each section independently into GitHub. Label each block with a bold heading outside the fence (eg `**Title**`). Do not include the section heading (eg `## ℹ️ Overview`) inside the code block. No other preamble or commentary.
-
-6. **Formatting rules:**
-
-   - Bullets over prose in Overview and Test Instructions.
-   - For Risks: include only `[x]` checked lines (omit unchecked categories). Put any additional notes BELOW the checkbox list.
-
-7. **Use this exact template** (each section in its own fenced code block):
-
-**Title**
-
-````
-```markdown
-<concise title>
+```sh
+git log origin/master..HEAD --oneline
+git diff origin/master...HEAD --stat
+git diff origin/master...HEAD
 ```
-````
 
-**Overview**
+Read the full diff carefully. Every claim in the summary must be backed by something in the diff. Do not describe changes that were discussed but not committed, or changes that were made and then reverted.
 
-````
-```markdown
-<description here>
-```
-````
+### Conversation context is secondary
 
-**Test Instructions**
+If this runs within an existing chat session, the conversation may explain _why_ a change was made or what trade-offs were considered. Use that for the "why", but never let it override what the diff actually shows. If the conversation mentions a change that isn't in the diff, do not include it.
 
-````
-```markdown
-1. <specific step>
-2. <specific step>
-3. <specific step>
-```
-````
+### Generate a PR title
 
-**Test Results** (optional)
+Concise and descriptive. Do not prefix or include the ticket ID — the branch name already carries it. The PR title should describe the change, not duplicate the branch metadata.
 
-````
-```markdown
-<only include this section if you have actual results to share; omit entirely otherwise>
-```
-````
+### Fill in the template sections
 
-**Risks**
+Use the live template fetched above. For each section it contains, apply this guidance where relevant:
 
-````
-```markdown
-<only include [x] checked lines for applicable risks from: Authentication/authorization, Data privacy, Networking, Major configuration, Other core setup>
-<add context about the risk below>
-<if no risks apply, just write: "No significant risks - [brief reason]">
-```
-````
+- **Overview** — replace the "REPLACE ME" placeholder with what changed and why. Short bullets, not prose. 3-5 bullets max, one line each. Skip obvious context the diff conveys, focus on intent and non-obvious decisions.
+- **Test Instructions** — only steps a reviewer actually needs to run. Skip "clone the repo" style setup. 3-5 steps max. If none can be accurately defined, tell the user to fill this in as a next step after the PR is created.
+- **Test Results** — include only when you have actual results, screenshots, recordings, or query outputs to share. Otherwise leave the section empty or omit per the template's convention.
+- **Risks** — check `[x]` only for real risks (omit unchecked categories from your output). Add context below the checkbox list. If none apply, write one short line eg "No significant risks - [brief reason]". If you cannot accurately assess risks, tell the user to fill this in as a next step.
 
-8. **Offer to publish.** After displaying the summary, ask the user if they'd like to:
+**Length target:** full summary readable in under 30 seconds. If you're writing more, cut the least important detail first. Default to the shorter version.
 
-   - **Create a new PR** (see [PR Creation](#pr-creation) below)
-   - **Update an existing PR:** user provides the PR number, then run `gh pr edit <number>` to set the title and body
-   - **Do nothing:** they'll handle it themselves
+### Output format
 
-   Let the user know to review the generated PR description and walk through the Authoring Guidelines section in the template before marking ready for review.
+Output the title in its own fenced markdown code block, then each template section in its own fenced markdown code block. Triple backticks with `markdown` language tag. Label each block with a bold heading outside the fence (eg `**Title**`, `**Overview**`) matching the section name in the template. Do not include the section heading (eg `## ℹ️ Overview`) inside the code block — the bold label outside serves that purpose. No other preamble or commentary.
+
+This lets the user copy-paste each section independently into GitHub.
+
+### Offer to publish
+
+After displaying the summary, ask the user if they'd like to:
+
+- **Create a new PR** (see [PR Creation](#pr-creation) below)
+- **Update an existing PR** — user provides the PR number, then run `gh pr edit <number>` to set the title and body
+- **Do nothing** — they'll handle it themselves
+
+Let the user know to review the generated PR description and walk through the Authoring Guidelines section in the template before marking ready for review.
 
 ## PR Creation
 
@@ -169,5 +132,5 @@ EOF
 
 Replace the placeholders:
 
-- `{TITLE}`: concise yet descriptive title for the branch's changes.
-- `{BODY}`: PR body using the [PR Template](#pr-template), filled in per the [Instructions](#instructions) above.
+- `{TITLE}`: concise, descriptive title for the branch's changes (no ticket ID).
+- `{BODY}`: PR body using the fetched [PR Template](#pr-template), filled in per [Drafting the PR](#drafting-the-pr).
