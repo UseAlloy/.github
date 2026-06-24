@@ -25,6 +25,15 @@ As the author, I verify that I have:
 - [ ] Added/updated unit tests as applicable.
 - [ ] Added/updated documentation as applicable.
 
+## 🤖 Coding Agent Usage
+
+How much did coding agents (e.g. Claude Code, Cursor, Copilot) contribute to this PR?
+
+- [ ] None — written entirely by hand
+- [ ] Light — autocomplete and minor suggestions
+- [ ] Moderate — agent wrote meaningful portions, heavily reviewed by me
+- [ ] Heavy — largely agent-authored
+
 ## 💬 Reviewer Guidelines
 
 > [!TIP]
