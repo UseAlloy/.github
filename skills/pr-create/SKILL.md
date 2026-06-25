@@ -44,10 +44,9 @@ https://github.com/UseAlloy/.github/blob/master/.github/PULL_REQUEST_TEMPLATE.md
 Fetch it in a shell to get the live section list and headings:
 
 ```sh
-export PR_TEMPLATE=$(gh api \
+gh api \
   --header 'Accept: application/vnd.github.v3.raw' \
   'repos/UseAlloy/.github/contents/.github/PULL_REQUEST_TEMPLATE.md'
-)
 ```
 
 Fill in this template — do not invent or reorder sections. The per-section authoring guidance below applies to whichever sections the template currently contains.
@@ -78,7 +77,7 @@ Concise and descriptive. Do not prefix or include the ticket ID — the branch n
 
 Use the live template fetched above. For each section it contains, apply this guidance where relevant:
 
-- **Coding AI Authorship** — select the option that reflects who did the *coding* work in the diff. Writing this PR description does not count. Infer from the diff and conversation context: if the conversation shows an agent made the code changes, check `AI-authored` and replace the template comment with a MAX 100-character sentence describing what the AI did (e.g. "AI wrote plan, added tests, made 95% of code changes, tested locally."). If the code was human-written and only the description is AI-generated, check `Human-authored` and remove the comment.
+- **Coding AI Authorship** — MUST select the option that reflects who did the *coding* work in the diff. If unsure, check `Human-authored`. Writing this PR description does not count. Infer from the diff and conversation context: if the conversation shows an agent made the code changes, check `AI-authored` and replace the template comment with a MAX 100-character sentence describing what the AI did (e.g. "AI wrote plan, added tests, made 95% of code changes, tested locally."). If the code was human-written and only the description is AI-generated, check `Human-authored` and remove the comment.
 - **Overview** — replace the "REPLACE ME" placeholder with what changed and why. Short bullets, not prose. 3-5 bullets max, one line each. Skip obvious context the diff conveys, focus on intent and non-obvious decisions.
 - **Test Instructions** — only steps a reviewer actually needs to run. Skip "clone the repo" style setup. 3-5 steps max. If none can be accurately defined, tell the user to fill this in as a next step after the PR is created.
 - **Test Results** — include only when you have actual results, screenshots, recordings, or query outputs to share. Otherwise leave the section empty or omit per the template's convention.
@@ -124,7 +123,7 @@ After displaying the summary, ask the user if they'd like to:
 
 - **Create a new PR** (see [PR Creation](#pr-creation) below)
 - **Update an existing PR** — user provides the PR number, then run `gh pr edit <number>` to set the title and body
-- **Do nothing** — they'll handle it themselves
+- **Do nothing** — provide the filled-out PR template as Markdown that the user will copy and paste themselves
 
 Let the user know to review the generated PR description and walk through the Authoring Guidelines section in the template before marking ready for review.
 
