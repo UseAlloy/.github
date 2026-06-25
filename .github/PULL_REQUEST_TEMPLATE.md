@@ -1,4 +1,4 @@
-## 🤖 Coding AI authorship of this PR
+## 🤖 Coding AI Authorship
 
 - [ ] Human-authored: written almost entirely by hand; maybe some autocomplete.
 - [ ] Co-authored: agent wrote meaningful portions, significantly edited by me.
