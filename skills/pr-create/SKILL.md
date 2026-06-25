@@ -44,10 +44,9 @@ https://github.com/UseAlloy/.github/blob/master/.github/PULL_REQUEST_TEMPLATE.md
 Fetch it in a shell to get the live section list and headings:
 
 ```sh
-export PR_TEMPLATE=$(gh api \
+gh api \
   --header 'Accept: application/vnd.github.v3.raw' \
   'repos/UseAlloy/.github/contents/.github/PULL_REQUEST_TEMPLATE.md'
-)
 ```
 
 Fill in this template — do not invent or reorder sections. The per-section authoring guidance below applies to whichever sections the template currently contains.
