@@ -123,7 +123,7 @@ After displaying the summary, ask the user if they'd like to:
 
 - **Create a new PR** (see [PR Creation](#pr-creation) below)
 - **Update an existing PR** — user provides the PR number, then run `gh pr edit <number>` to set the title and body
-- **Do nothing** — they'll handle it themselves
+- **Do nothing** — provide the filled-out PR template as Markdown that the user will copy and paste themselves
 
 Let the user know to review the generated PR description and walk through the Authoring Guidelines section in the template before marking ready for review.
 
