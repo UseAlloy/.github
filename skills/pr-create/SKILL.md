@@ -78,7 +78,7 @@ Concise and descriptive. Do not prefix or include the ticket ID — the branch n
 
 Use the live template fetched above. For each section it contains, apply this guidance where relevant:
 
-- **Coding AI Authorship** — check the option that best reflects how the PR was produced. When this skill runs as a coding agent, check `AI-authored` and append a MAX 100-character sentence (inline, on the same line after the checkbox label) describing what the AI did, e.g. "AI wrote plan, added tests, made 95% of code changes, tested locally, and drafted PR."
+- **Coding AI Authorship** — select the option that reflects who did the *coding* work in the diff. Writing this PR description does not count. Infer from the diff and conversation context: if the conversation shows an agent made the code changes, check `AI-authored` and replace the template comment with a MAX 100-character sentence describing what the AI did (e.g. "AI wrote plan, added tests, made 95% of code changes, tested locally."). If the code was human-written and only the description is AI-generated, check `Human-authored` and remove the comment.
 - **Overview** — replace the "REPLACE ME" placeholder with what changed and why. Short bullets, not prose. 3-5 bullets max, one line each. Skip obvious context the diff conveys, focus on intent and non-obvious decisions.
 - **Test Instructions** — only steps a reviewer actually needs to run. Skip "clone the repo" style setup. 3-5 steps max. If none can be accurately defined, tell the user to fill this in as a next step after the PR is created.
 - **Test Results** — include only when you have actual results, screenshots, recordings, or query outputs to share. Otherwise leave the section empty or omit per the template's convention.
