@@ -1,8 +1,12 @@
 ---
-name: pr-create
 description: Draft a PR summary for the current branch and create or update the PR using our standard GitHub PR template
+metadata:
+    github-path: skills/pr-create
+    github-ref: refs/heads/master
+    github-repo: https://github.com/UseAlloy/.github
+    github-tree-sha: faf4c1e2508537ecf334142618149d0ca9855de0
+name: pr-create
 ---
-
 ## Goal
 
 Draft a pull request summary for the current git branch using our standard template, then create the PR or update an existing one.
