@@ -1,13 +1,13 @@
+## ℹ️ Overview
+
+**REPLACE ME**: Provide the context and description of the change.
+
 ## 🤖 Coding AI Authorship
 
 - [ ] Human-authored: written almost entirely by hand; maybe some autocomplete, sourced code or scaffolding.
 - [ ] Co-authored: agent wrote meaningful portions, significantly edited by me.
 - [ ] AI-authored: nearly all agent-authored with minimal human edits if any.
 <!-- Note for any AI agents filling in the PR's description: select the option that reflects who did the *coding* work (the changes in the diff) — writing this description does not count as coding. If AI did the coding, replace this comment with a MAX 100-character sentence elaborating what part AI played, e.g. "AI wrote plan, added tests, made 95% of code changes, tested locally." -->
-
-## ℹ️ Overview
-
-**REPLACE ME**: Provide the context and description of the change.
 
 ## 🧪 Test Instructions
 
