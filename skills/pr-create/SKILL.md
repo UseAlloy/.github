@@ -71,7 +71,21 @@ If this runs within an existing chat session, the conversation may explain _why_
 
 ### Generate a PR title
 
-Concise and descriptive. Do not prefix or include the ticket ID — the branch name already carries it. The PR title should describe the change, not duplicate the branch metadata.
+Use [conventional commit](https://www.conventionalcommits.org/) format. Do not prefix or include the ticket ID — the branch name already carries it.
+
+- Format: `<type>: <description>`
+- Common types: `feat`, `fix`, `chore`, `build`
+- Include the component or service name when the title alone would be ambiguous
+- Multi-step PRs: join with ` and `
+
+Examples:
+
+- `fix: handle null customer id in journey webhook handler`
+- `feat: add pagination to evaluations list endpoint`
+- `chore: upgrade node to 20 in CI workflow`
+- `feat: add retry logic and update error logging`
+
+Do not prefix the title with bracket tags or duplicate the branch name.
 
 ### Fill in the template sections
 
