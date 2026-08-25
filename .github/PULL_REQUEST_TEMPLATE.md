@@ -1,4 +1,5 @@
 ## ℹ️ Overview
+<!-- Do not remove this section: the pr-description-check workflow uses it to validate that the PR description includes a non-empty summary with enough context for reviewers. -->
 
 **REPLACE ME**: Provide the context and description of the change.
 

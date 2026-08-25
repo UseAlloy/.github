@@ -37,6 +37,7 @@ jobs:
             const script = require('${{ github.workspace }}/.github/scripts/validate-pr-description.js');
             // github, context, and core are injected by github-script from this
             // job's runtime context (the caller's workflow run / PR payload).
+            // Revert PRs (title "Revert ..." or revert-* branch) are exempt — see validate-pr-description.js.
             await script(
               { github, context, core },
               { minOverviewLength: Number(process.env.MIN_OVERVIEW_LENGTH) || 40 }
