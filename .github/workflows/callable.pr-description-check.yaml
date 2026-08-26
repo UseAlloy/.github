@@ -1,0 +1,44 @@
+name: pr-description-check
+on:
+  workflow_call:
+    inputs:
+      min_overview_length:
+        description: Minimum character count required in the Overview section after stripping HTML comments and placeholders.
+        type: number
+        required: false
+        default: 40
+    secrets:
+      GH_TOKEN:
+        required: true
+
+jobs:
+  pr-description-check:
+    name: PR description check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout workflow scripts
+        uses: actions/checkout@v7
+        with:
+          # Check out the reusable workflow's own repo/SHA so callers get the
+          # script version that matches the pinned callable workflow.
+          repository: ${{ job.workflow_repository }}
+          ref: ${{ job.workflow_sha }}
+          sparse-checkout: |
+            .github/scripts
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Validate PR description
+        uses: actions/github-script@v9
+        env:
+          MIN_OVERVIEW_LENGTH: ${{ inputs.min_overview_length }}
+        with:
+          github-token: ${{ secrets.GH_TOKEN }}
+          script: |
+            const script = require('${{ github.workspace }}/.github/scripts/validate-pr-description.js');
+            // github, context, and core are injected by github-script from this
+            // job's runtime context (the caller's workflow run / PR payload).
+            // Revert PRs (title "Revert ..." or revert-* branch) are exempt — see validate-pr-description.js.
+            await script(
+              { github, context, core },
+              { minOverviewLength: Number(process.env.MIN_OVERVIEW_LENGTH) }
+            );

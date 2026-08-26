@@ -1,0 +1,13 @@
+name: pr-description-check
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+
+jobs:
+  call-pr-description-check-workflow:
+    uses: ./.github/workflows/callable.pr-description-check.yaml
+    secrets:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
