@@ -40,5 +40,5 @@ jobs:
             // Revert PRs (title "Revert ..." or revert-* branch) are exempt — see validate-pr-description.js.
             await script(
               { github, context, core },
-              { minOverviewLength: Number(process.env.MIN_OVERVIEW_LENGTH) || 40 }
+              { minOverviewLength: Number(process.env.MIN_OVERVIEW_LENGTH) }
             );
