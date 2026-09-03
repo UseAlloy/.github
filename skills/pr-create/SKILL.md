@@ -35,6 +35,10 @@ Right size:
 
 The trimmed version drops field lists, quantitative details, and extra justifying clauses — all derivable from the diff or obvious from context. The "why" survives as a single short clause.
 
+## Branch creation
+
+If a branch is needed to be created or validated, refer to the `branch-validate` skill.
+
 ## PR Template
 
 The canonical pull request template lives in this public `UseAlloy/.github` repository:
@@ -58,10 +62,12 @@ Fill in this template — do not invent or reorder sections. The per-section aut
 This is the single source of truth, not conversation history.
 
 ```sh
-git log origin/master..HEAD --oneline
-git diff origin/master...HEAD --stat
-git diff origin/master...HEAD
+git log origin/main..HEAD --oneline
+git diff origin/main...HEAD --stat
+git diff origin/main...HEAD
 ```
+
+Replace `main` with the default branch, which is `main` by default but in some cases may be `master`.
 
 Read the full diff carefully. Every claim in the summary must be backed by something in the diff. Do not describe changes that were discussed but not committed, or changes that were made and then reverted.
 
