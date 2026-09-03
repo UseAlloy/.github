@@ -37,3 +37,13 @@ You can then ask an AI agent to create a PR, or call the skill directly in the p
 ```
 
 The skill drafts a PR summary from the branch's diff (title, overview, test instructions, risks) and offers to create a new PR or update an existing one.
+
+### Validate branch names
+
+A skill is available to ensure git branch names conform to the Alloy organization standard.
+
+```sh
+gh skill install UseAlloy/.github branch-validate
+```
+
+It ships with a `validate-branch.sh` script to validate branch names.
