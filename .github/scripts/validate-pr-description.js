@@ -2,14 +2,29 @@
  * Validate that a PR description has a filled Overview section.
  * Intended for use with actions/github-script.
  *
+ * Revert PRs and bot authors whose login matches EXEMPT_BOT_LOGIN_PATTERN are
+ * exempt; detection lives here rather than in a caller/workflow `if` condition
+ * so the job still completes successfully instead of showing as skipped, which
+ * can block merges when this check is required.
+ *
  * @param {{ core: import('@actions/core'), context: import('@actions/github').Context }} params
  * @param {{ minOverviewLength?: number }} options
  */
-/**
- * Revert PRs are exempt from description validation. Detection lives here rather than
- * in a workflow `if` condition so the job still completes successfully instead of
- * showing as skipped, which can block merges when this check is required.
- */
+
+/** Case-insensitive: "alloy" anywhere, or "ai" as a hyphen/underscore-delimited token. */
+const EXEMPT_BOT_LOGIN_PATTERN = /alloy|(?:^|[-_])ai(?:[-_]|$)/i;
+
+function normalizeBotLogin(login) {
+  return (login ?? '').toLowerCase().replace(/\[bot\]$/, '');
+}
+
+function isExemptBotPr(pr) {
+  if (pr?.user?.type !== 'Bot') {
+    return false;
+  }
+  return EXEMPT_BOT_LOGIN_PATTERN.test(normalizeBotLogin(pr?.user?.login));
+}
+
 function isRevertPr(pr) {
   const title = pr?.title ?? '';
   const headRef = pr?.head?.ref ?? '';
@@ -19,6 +34,11 @@ function isRevertPr(pr) {
 module.exports = async function validatePrDescription({ core, context }, options = {}) {
   const minOverviewLength = Number(options.minOverviewLength) || 40;
   const pr = context.payload.pull_request;
+
+  if (isExemptBotPr(pr)) {
+    core.info('Skipping PR description check for exempt bot-authored PR.');
+    return;
+  }
 
   if (isRevertPr(pr)) {
     core.info('Skipping PR description check for revert PR.');

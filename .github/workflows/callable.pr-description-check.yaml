@@ -11,6 +11,16 @@ on:
       GH_TOKEN:
         required: true
 
+# The actual use of the workflow should have the following:
+#on:
+#  pull_request:
+#    types: [opened, edited, reopened]
+#
+# Exempt bot and revert PRs are handled in validate-pr-description.js so this job
+# still passes. Other bot PRs must fill Overview. Callers must always invoke this
+# workflow — do not add a job-level if on the caller, or the required check stays
+# pending for bot-authored PRs.
+
 jobs:
   pr-description-check:
     name: PR description check
@@ -37,7 +47,7 @@ jobs:
             const script = require('${{ github.workspace }}/.github/scripts/validate-pr-description.js');
             // github, context, and core are injected by github-script from this
             // job's runtime context (the caller's workflow run / PR payload).
-            // Revert PRs (title "Revert ..." or revert-* branch) are exempt — see validate-pr-description.js.
+            // Exempt bot and revert PRs are handled in validate-pr-description.js.
             await script(
               { github, context, core },
               { minOverviewLength: Number(process.env.MIN_OVERVIEW_LENGTH) }
