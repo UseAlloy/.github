@@ -77,15 +77,17 @@ If this runs within an existing chat session, the conversation may explain _why_
 
 ### Generate a PR title
 
-Use [conventional commit](https://www.conventionalcommits.org/) format. Do not prefix or include the ticket ID — the branch name already carries it.
+When the branch has a ticket ID, start the title with it so reviewers and the merge history show it: `<TICKET-ID>: <description>`. Without a ticket, use [conventional commit](https://www.conventionalcommits.org/) format.
 
-- Format: `<type>: <description>`
+- Format: `<TICKET-ID>: <description>`, or `<type>: <description>` when there's no ticket
 - Common types: `feat`, `fix`, `chore`, `build`
 - Include the component or service name when the title alone would be ambiguous
 - Multi-step PRs: join with ` and `
 
 Examples:
 
+- `ABC-123: index the docs that nothing linked to`
+- `ABC-124: handle null customer id in journey webhook handler`
 - `fix: handle null customer id in journey webhook handler`
 - `feat: add pagination to evaluations list endpoint`
 - `chore: upgrade node to 20 in CI workflow`
@@ -178,5 +180,5 @@ EOF
 
 Replace the placeholders:
 
-- `{TITLE}`: concise, descriptive title for the branch's changes (no ticket ID).
+- `{TITLE}`: concise, descriptive title for the branch's changes, starting with the ticket ID when there is one.
 - `{BODY}`: PR body using the fetched [PR Template](#pr-template), filled in per [Drafting the PR](#drafting-the-pr).
